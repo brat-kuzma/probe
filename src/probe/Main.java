@@ -10,9 +10,9 @@ public class Main {
                 if (a >= denga) {
                     a = a - denga;
                     System.out.println("Your money " + denga + " a =" + a);
-                    //  continue;
+                    break;
                 }
-                break;
+                continue;
             }
             //return a;
         }
