@@ -1,44 +1,37 @@
 package probe;
 
 public class Main {
-    //int a; int denga;
-    //public void setChange(int a);
-    public static void getChange(int a) {
-        int[] num = new int[]{10, 2, 1};
-        while (a != 0) {
-            for (int denga : num) {
-                if (a >= denga) {
-                    a = a - denga;
-                    System.out.println("Your money " + denga + " a =" + a);
-                    break;
-                }
-                continue;
-            }
-            //return a;
-        }
-    }
+
     public static void main(String[] args) {
-        Main.getChange(55);
+        int summa = Integer.parseInt(args[0]); //уже забыл каким образом передается это значение
+        ChangeCalculate obj = new ChangeCalculate(summa);
+        obj.getChange();
      //   System.out.print("Your money " + denga +" a =" + a);
     }
 }
-  //     int a = 100 - 47
-  //     53
-  //   int[] num = new int[]{100, 50, 10, 2, 1};
-  //  Main raq = new Main();
 
-           // for (int i = 0; i <= num.length; i++) {
-          //      if (calc.getChange(55)) {
-          //          break;
-           //     }
-                /*
-                if (a >= num[i]) {
-                    a = a - num[i];
-                    System.out.println("Your money " + num[i] +" a =" + a);
+class ChangeCalculate { //класс расчет сдачи
+    int a;
+    int[] num = new int[]{10, 2, 1};
+    ChangeCalculate(int summa) {
+        a=summa;
+    }
+    public void getChange() {  // метод, с циклом, прогоняющим массива, и вложенным циклом, с еще одним методом, не иначе как усложение
+        while (a != 0) {
+            for (int nominal : num) {
+                if (getDenga(nominal)) {
                     break;
                 }
-                           }
-
-
+            }
         }
-    } */
+    }
+
+    public boolean getDenga(int nominal) {  //метод принимающий в качестве аргумента значения массива, затем вычитает из общей сдачи (а) это значение
+        if (this.a >= nominal) {
+            this.a = a - nominal;
+            System.out.println("Your money " + nominal + " a =" + this.a);
+            return true;
+        }
+        return false;
+    }
+}
